@@ -1,0 +1,20 @@
+name: PoclusSurvival
+version: '${project.version}'
+main: net.poclus.survival.PoclusSurvival
+api-version: '1.21'
+description: Last Man Standing survival mini-game for Poclus SMP
+authors: [ Poclus ]
+
+commands:
+  survival:
+    description: Main PoclusSurvival command
+    usage: /survival <start|stop|join|leave|leaderboard|setlobby|sedarena|status>
+    aliases: [ lms, pvs ]
+
+permissions:
+  poclus.survival.admin:
+    description: Access to admin commands
+    default: op
+  poclus.survival.play:
+    description: Ability to join survival games
+    default: true
