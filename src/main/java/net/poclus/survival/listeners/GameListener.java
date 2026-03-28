@@ -2,7 +2,6 @@ package net.poclus.survival.listeners;
 
 import net.poclus.survival.PoclusSurvival;
 import net.poclus.survival.managers.GameManager;
-import net.poclus.survival.models.GameState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -21,13 +20,14 @@ public class GameListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onPlayerDeath(PlayerDeathEvent event) {
-        Player player = event.getEntity();
+        Player player = event.getPlayer();
         GameManager gm = plugin.getGameManager();
 
         if (!gm.isParticipant(player)) return;
 
         Player killer = player.getKiller();
-        event.setDeathMessage(null); // suppress default message
+        event.setDeathMessage(null);
+        event.setKeepInventory(true);
 
         gm.eliminatePlayer(player, killer, true);
     }
@@ -37,10 +37,8 @@ public class GameListener implements Listener {
         Player player = event.getPlayer();
         GameManager gm = plugin.getGameManager();
 
-        // If they were a participant who just died, they're now a spectator
-        // Teleport respawn to arena so they can spectate
         if (gm.isSpectator(player)) {
-            // They'll respawn and be in SPECTATOR gamemode already
+            // Already set to SPECTATOR gamemode by eliminatePlayer
         }
     }
 
