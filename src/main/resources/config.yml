@@ -1,0 +1,71 @@
+# PoclusSurvival Configuration
+# Poclus SMP - Last Man Standing
+
+game:
+  # How often to auto-start a game (in minutes)
+  auto-start-interval: 60
+  # Countdown before game begins (seconds)
+  countdown: 30
+  # Minimum players required to start
+  min-players: 2
+  # Maximum players per game
+  max-players: 20
+  # Duration before border starts shrinking (seconds)
+  grace-period: 60
+  # How long border takes to fully close (seconds)
+  shrink-duration: 300
+  # Initial border size (blocks radius)
+  border-start-size: 200
+  # Final border size (blocks radius)
+  border-end-size: 10
+  # Game world name (set this to your arena world)
+  world: "survival_arena"
+
+lobby:
+  # Lobby world (set automatically via /survival setlobby)
+  world: "world"
+  x: 0.0
+  y: 64.0
+  z: 0.0
+  yaw: 0.0
+  pitch: 0.0
+
+arena:
+  # Arena spawn center (set via /survival setarena)
+  world: "survival_arena"
+  x: 0.0
+  y: 64.0
+  z: 0.0
+
+rewards:
+  # Winner rewards (executed as console commands, use %player% placeholder)
+  winner:
+    - "give %player% diamond 5"
+    - "eco give %player% 500"
+    - "broadcast &6&l[Poclus SMP] &e%player% &fwon the Last Man Standing challenge!"
+  # Runner-up (2nd place)
+  runner-up:
+    - "give %player% gold_ingot 5"
+    - "eco give %player% 200"
+  # Top 3
+  top3:
+    - "give %player% iron_ingot 5"
+    - "eco give %player% 100"
+
+# Scoreboard/boss bar settings
+display:
+  bossbar: true
+  scoreboard: true
+
+messages:
+  prefix: "&8[&6Poclus&eSMP&8] "
+  game-starting: "&aA Last Man Standing game is starting in &e%seconds% &aseconds! Type &f/survival join &ato play!"
+  game-started: "&aThe game has begun! &eShrinking starts in &f%grace% &eseconds. Good luck!"
+  player-joined: "&e%player% &ahas joined! &f(%current%/%max% players)"
+  player-eliminated: "&c%player% &fhas been eliminated! &e%remaining% &fplayers remain."
+  player-won: "&6&l%player% &e&lwon the Last Man Standing challenge!"
+  not-enough-players: "&cNot enough players to start the game."
+  already-in-game: "&cYou are already in a game!"
+  no-game-running: "&cNo game is currently running."
+  game-full: "&cThe game is full!"
+  border-shrinking: "&c&lWarning! &fThe border is now shrinking!"
